@@ -14,7 +14,7 @@ Sprite.prototype.centerX = function(){
 }
 
 Sprite.prototype.centerY = function () {
-    return this.y * (this.height / 2);           
+    return this.y + (this.height / 2);           
 }
 
 Sprite.prototype.halfWidth = function () {
@@ -23,4 +23,30 @@ Sprite.prototype.halfWidth = function () {
 
 Sprite.prototype.halfHeight = function () {
     return this.height / 2;
+}
+
+var Alien = function(sourceX, sourceY, width, height, x, y){
+    Sprite.call(this, sourceX, sourceY, width, height, x, y);
+    this.NORMAL = 1;
+    this.EXPLODED = 2;
+    this.CRAZY = 3;
+    this.state = this.NORMAL;
+    this.mvStyle = this.NORMAL;
+}
+
+Alien.prototype = Object.create(Sprite.prototype);
+
+Alien.prototype.explode = function(){
+    this.sourceX = 80;
+    this.width = this.height = 56;
+}
+
+var ObjectsMessage = function(y, text, color){
+    this.x = 0;
+    this.y = y;
+    this.text = text;
+    this.visible = true;
+    this.font = "normal bold 20px emulogic";
+    this.color =  color;
+    this.baseLine = "top";
 }
